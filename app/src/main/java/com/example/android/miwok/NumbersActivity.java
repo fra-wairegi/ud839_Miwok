@@ -15,14 +15,34 @@
  */
 package com.example.android.miwok;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
+        setContentView(R.layout.word_list);
+
+        ArrayList<Word> words = new ArrayList<Word>();
+
+        words.add(new Word("lutti","one",R.drawable.number_one));
+        words.add(new Word("fdfd","two",R.drawable.number_two));
+        words.add(new Word("fdd","three",R.drawable.number_three));
+        words.add(new Word("dfdf","four",R.drawable.number_four));
+        words.add(new Word("dfdf","five",R.drawable.number_five));
+        words.add(new Word("vcv","six",R.drawable.number_one));
+        words.add(new Word("cvv","seven",R.drawable.number_one));
+        words.add(new Word("vfg","eight",R.drawable.number_one));
+
+        // Initialize an ArrayAdapter
+        WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_numbers);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(itemsAdapter);
     }
 }
